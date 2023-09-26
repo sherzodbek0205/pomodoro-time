@@ -7,28 +7,30 @@ const start = document.querySelector(".start");
 const title = document.querySelector("title");
 const pause = document.querySelector(".pause");
 const timerElement = document.getElementById("timer");
-
-let countdownTime = 300;
+const music = document.querySelector(".music");
+let countdownTime=300;
 let timerInterval;
 
 short.onclick = () => {
   timerElement.innerText = "01:00";
   main.classList = "next";
   board.classList = "board one";
-  countdownTime = 180;
+  countdownTime = 60;
+
 };
 
 pomodoro.onclick = () => {
   timerElement.innerText = "05:00";
   main.classList = "";
   board.classList = "board";
+  countdownTime=300;
 };
 
 long.onclick = () => {
   timerElement.innerText = "15:00";
   main.classList = "next2";
   board.classList = "board two";
-  countdownTime = 600;
+  countdownTime = 900;
 };
 
 start.onclick = () => {
@@ -58,7 +60,7 @@ function updateTimer() {
 
   if (countdownTime < 0) {
     clearInterval(timerInterval);
-    timerElement.style.fontSize = "85px";
     timerElement.textContent = "Time's Up";
+    music.innerHTML=`  <audio autoplay src="/audio/tc4v8fj7knlq3dhwf2.m4a"></audio>`;
   }
 }
